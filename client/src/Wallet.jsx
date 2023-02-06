@@ -23,11 +23,6 @@ function Wallet({ address, setAddress, balance, setBalance, privateKey, setPriva
 
     // Signing Process
 
-    async function recoverKey(message, signature, recoveryBit) {
-      const publicKey = await secp.recoverPublicKey(hashMessage(message), signature, recoveryBit)
-      return publicKey;
-    }
-
     const hashMessage = (message) => {
       const bytes = utf8ToBytes(message);
       const hash = keccak256(bytes);
@@ -44,6 +39,11 @@ function Wallet({ address, setAddress, balance, setBalance, privateKey, setPriva
       setMessage(message);
       
       return message
+    }
+
+    async function recoverKey(message, signature, recoveryBit) {
+      const publicKey = await secp.recoverPublicKey(hashMessage(message), signature, recoveryBit)
+      return publicKey;
     }
 
   return (
