@@ -22,7 +22,7 @@ function App() {
         message={message}
         setMessage={setMessage}
       />
-      <Transfer setBalance={setBalance} address={address} privateKey={privateKey} message = {message} />
+      <Transfer setBalance={setBalance} address={address} message = {message} />
     </div>
   );
 }
